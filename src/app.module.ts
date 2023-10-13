@@ -12,6 +12,7 @@ import { AuthModule } from './auth/auth.module';
 import { QuestionerModule } from './questioner/questioner.module';
 import { Customers } from './questioner/entities/customer.entity';
 import { Questioner } from './questioner/entities/questioner.entity';
+import { InstanceModule } from './instance/instance.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { Questioner } from './questioner/entities/questioner.entity';
     QuestionModule,
     UserModule,
     QuestionerModule,
+    InstanceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

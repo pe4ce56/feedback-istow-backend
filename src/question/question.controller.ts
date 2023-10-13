@@ -13,7 +13,9 @@ import {
 import { QuestionService } from './question.service';
 import { CreateQuestionDto } from './dto/create-question.dto';
 import { UpdateQuestionDto } from './dto/update-question.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Question')
 @Controller('question')
 export class QuestionController {
   constructor(private readonly questionService: QuestionService) {}
@@ -25,6 +27,7 @@ export class QuestionController {
     try {
       const data = await this.questionService.create({
         question: createQuestionDto.question,
+        type: createQuestionDto.type,
       });
       return data;
     } catch (e) {

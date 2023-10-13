@@ -31,8 +31,8 @@ describe('QuestionService', () => {
   it('should get all questions', async () => {
     // Mock the repository method
     const mockedQuestions: any[] = [
-      { id: 1, question: 'Item 1' },
-      { id: 2, question: 'Item 1' },
+      { id: 1, question: 'Item 1', type: 1 },
+      { id: 2, question: 'Item 1', type: 1 },
     ];
     jest.spyOn(repository, 'find').mockResolvedValue(mockedQuestions);
 

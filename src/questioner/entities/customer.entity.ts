@@ -6,8 +6,10 @@ import {
   UpdateDateColumn,
   OneToMany,
   JoinColumn,
+  ManyToOne,
 } from 'typeorm';
 import { Questioner } from './questioner.entity';
+import { Instance } from 'src/instance/entities/instance.entity';
 
 @Entity({ name: 'customers', synchronize: true })
 export class Customers {
@@ -18,7 +20,10 @@ export class Customers {
   name: string;
 
   @Column()
-  instance: string;
+  position: string;
+
+  @Column({ nullable: true })
+  comments: string;
 
   @CreateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',
@@ -41,4 +46,11 @@ export class Customers {
     },
   )
   questioners: Questioner[];
+
+  @ManyToOne(() => Instance, (instance: Instance) => instance.customers, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn()
+  instance: Instance;
 }

@@ -17,6 +17,9 @@ export class Question {
   @Column()
   question: string;
 
+  @Column({ default: 1 })
+  type: number;
+
   @CreateDateColumn({
     default: () => 'CURRENT_TIMESTAMP(6)',
     onUpdate: 'CURRENT_TIMESTAMP(6)',

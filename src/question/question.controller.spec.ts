@@ -56,7 +56,7 @@ describe('QuestionController', () => {
     const mockError = new Error('Create failed');
     jest.spyOn(service, 'create').mockRejectedValue(mockError);
     try {
-      const createDto: CreateQuestionDto = { question: '' };
+      const createDto: CreateQuestionDto = { question: '', type: 0 };
       await controller.create(createDto);
     } catch (e) {
       // The HttpException object contains the status code

@@ -29,6 +29,8 @@ export class QuestionerController {
       const cust = {
         name: createQuestionDto.name,
         instance: createQuestionDto.instance,
+        position: createQuestionDto.position,
+        comments: createQuestionDto.comments || '',
       };
 
       const customer = await this.questionerService.createCustomer(cust);
