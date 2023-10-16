@@ -33,6 +33,7 @@ export class QuestionerService {
         questioners: {
           question: true,
         },
+        instance: true,
       },
     });
   }

@@ -10,11 +10,13 @@ import {
   HttpException,
   HttpStatus,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { QuestionerService } from './questioner.service';
 import { CreateQuestionerDto } from './dto/create-questioner.dto';
 import { UpdateQuestionerDto } from './dto/update-questioner.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @ApiTags('Questioner')
 @Controller('questioner')
@@ -49,20 +51,22 @@ export class QuestionerController {
     }
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('/respondents?')
   respondents(@Query('start') start: string, @Query('end') end: string) {
-    console.log(new Date(start));
     return this.questionerService.respondents(
       new Date(new Date(start)),
       new Date(new Date(end)),
     );
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.questionerService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.questionerService.findOne(+id);
