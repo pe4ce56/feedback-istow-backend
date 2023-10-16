@@ -38,7 +38,6 @@ export class QuestionController {
     }
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.questionService.findAll();
